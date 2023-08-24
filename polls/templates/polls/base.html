@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %} {% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/style.css" rel="stylesheet">
+
+    </head>
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+        <div class='flex flex-row-reverse justify-between h-12 w-full mx-auto max-w-screen-lg border-4 rounded border-red-600 mt-4 px-2 pb-2 bg-gradient-to-r from-indigo-500 to-red-600'>
+         <button class="mt-2 flex items-center text-sm font-bold">
+         <svg class="ml-0.5 mr-1.5 h-5 w-5 text-black" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" clip-rule="evenodd" />
+          <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
+        </svg>
+                {% if not user.is_authenticated %}
+                    <a href='/accounts/login/'> Login </a>
+                {% else %}
+                    <a href='/accounts/logout/'> Logout </a>
+                {% endif %}
+            </button>
+            
+        </div>
+
+
+        {% block content %}
+
+        {% endblock content %}
+    </body>
+ <script src="https://unpkg.com/htmx.org@1.9.3"></script>
+</html>

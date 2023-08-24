@@ -1,0 +1,15 @@
+{% if state == 'get' %}
+<li id="current_edit"> 
+    <input  class='border rounded'type="text" name="choice_text"> 
+    <button hx-post="api/choice/add"
+            hx-target="#current_edit" 
+            hx-swap="outerHTML"
+            hx-include="[name='choice_text']"
+            class='text-white text-sm font-semibold italic border-2 rounded px-2 border-indigo-600 bg-indigo-600'>
+        Submit
+    </button>
+</li>
+
+{% elif state == 'SUCCESS' %}
+<li>opcion {{c.choice_text}} añadida correctamente</li>
+{% endif %}>
